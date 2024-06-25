@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+     <div class="main w-full min-h-screen bg-zinc-900">
+        <div class="form p-5 text-white relative">
+            <form action="/create" method="post">
+                <input class="block px-5 w-[18vw] z-10 outline-none absolute top-[1%] left-[2.5%] shadow-2xl rounded-md py-2 bg-zinc-800 placeholder-red-500 text-red-500" type="text" placeholder="Title gose" name="title">
+                <textarea class="block w-[20vw] h-[40vh] outline-none rounded-md px-5 mt-2 py-4 resize-none bg-zinc-600" placeholder="Write your task detail" name="details"></textarea>
+                <input class="mt-2 bg-blue-600 px-5 py-2 rounded-md absolute top-[80%] left-[8%]" type="submit" value="Create Task">
+            </form>
+        </div>
+        <div class="tasks flex gap-3 p-10">
+
+            <% if(files.length > 0){%>
+                <% files.forEach(function(val){%>
+                    <div class="task main w-[22vw] h-[45vh] rounded-md bg-zinc-300 relative flex-col flex justify-between items-center" >
+                        <div class="w-full h-[15vh] bg-zinc-600 z-10  absolute rounded-b-full">
+                            <img class="w-full h-full object-cover rounded-b-full" src="https://i.pinimg.com/564x/1d/71/a2/1d71a20c440de3d622ffc7c70202c8b4.jpg" alt="">
+                        </div>
+                        <div class="task w-[22vw] shadow-xl h-52 absolute bottom-[0] px-3 py-4 rounded-md bg-zinc-800 overflow-hidden">
+                            <img class="w-full h-full object-cover object-center mr-[24px]" src="https://i.pinimg.com/564x/4b/ee/3b/4bee3b88416c05b662d91d9bc34f332f.jpg" alt="">
+                            <div class="absolute min-w-72 h-full px-3 py-4  z-40 top-[10%] text-black">
+                                <h1 class=" text-3xl tracking-tighter "> <%= val %></h1>
+                                <div class="flex w-full justify-between">
+                                    <a class="text-blue-500 inline-block mt-20" href="/file/<%= val %>">read more</a>
+                                    <a class="text-blue-500 mt-20 " href="/edit/<%= val %>">edit</a>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                <%}) %>
+
+           <% } else {%>
+            
+            <h3 class="text-zinc-600">no tasks yet</h3>
+          <% } %>
+             
+             
+             
+             
+            
+        </div>
+     </div>
+
+
+     
+</body>
+</html>
